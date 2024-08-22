@@ -82,8 +82,6 @@ SPACESHIP_GIT_BRANCH_PREFIX=""
 SPACESHIP_GIT_BRANCH_COLOR="yellow"
 
 alias runrails="bundle exec rails server"
-alias python="python3"
-alias pip="pip3"
 alias gcap="gaa && gcn! && ggf"
 alias poetry="$HOME/.local/bin/poetry"
 alias pipVenv="python3 -m venv venv && source venv/bin/activate"
