@@ -84,7 +84,20 @@ SPACESHIP_GIT_BRANCH_COLOR="yellow"
 alias runrails="bundle exec rails server"
 alias gcap="gaa && gcn! && ggf"
 alias poetry="$HOME/.local/bin/poetry"
-alias pipVenv="python3 -m venv venv && source venv/bin/activate"
+alias penv="penvSetup"
+alias pinst="pip install -r requirements.txt"
+
+penvSetup() {
+  python3 -m venv venv
+  source venv/bin/activate
+  touch requirements.txt
+  if [ ! -f .gitignore ]; then
+      echo -e "venv/\n__pycache__/\n*.py[cod]\n.vscode/\n.idea/\n.DS_Store\nThumbs.db" > .gitignore
+  else
+      echo -e "\n# Python virtual environment\nvenv/\n\n# Python cache files\n__pycache__/\n*.py[cod]\n\n# IDE-specific files\n.vscode/\n.idea/\n\n# OS-specific files\n.DS_Store\nThumbs.db" >> .gitignore
+  fi
+  echo "Virtual environment created, activated, requirements.txt touched, and .gitignore updated."
+}
 
 caff() {
   caffeinate -u -d -t $(( $1 * 60 * 60 ))
